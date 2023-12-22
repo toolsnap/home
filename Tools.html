@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Charset -->
+    <meta charset="utf-8">
+    <!-- Page Title -->
+    <title>Copy to Clipboard Example</title>
+    <!-- Styles -->
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 21px;
+            font-size: 13px;
+            color: #6a737b;
+            background-color: #fff;
+            padding: 20px;
+        }
+
+        #copy-button {
+            padding: 10px 20px;
+            background-color: #0eb493;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #copy-button:hover {
+            background-color: #0da482;
+        }
+
+        #copy-section {
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="copy-section">
+    <p id="copy-text">This is the text that will be copied to the clipboard when you click the button.</p>
+    <button id="copy-button">Copy to Clipboard</button>
+</div>
+
+<script>
+    function copyToClipboard(elementId) {
+        var text = document.getElementById(elementId).innerText;
+        var elem = document.createElement("textarea");
+        document.body.appendChild(elem);
+        elem.value = text;
+        elem.select();
+        document.execCommand("copy");
+        document.body.removeChild(elem);
+        alert("Text copied to clipboard");
+    }
+
+    document.getElementById("copy-button").onclick = function() {
+        copyToClipboard("copy-text");
+    };
+</script>
+
+</body>
+</html>
